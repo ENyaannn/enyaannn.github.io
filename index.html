@@ -10,34 +10,41 @@
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
 
-html {
-    scroll-behavior:smooth;
-}
+html {scroll-behavior:smooth;}
 
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family:'Orbitron', sans-serif;
     background:black;
     color:white;
     overflow-x:hidden;
-    opacity:0;
-    animation:fadeIn 1.2s ease forwards;
 }
 
-@keyframes fadeIn {
-    to { opacity:1; }
+/* Фон с оружием */
+.weapons-bg img {
+    position:fixed;
+    width:300px;
+    opacity:0.08;
+    filter:drop-shadow(0 0 20px red);
+    pointer-events:none;
+    z-index:0;
 }
+
+/* Размещение оружия */
+.ak { top:10%; left:-50px; transform:rotate(-25deg); }
+.awp { top:60%; right:-60px; transform:rotate(20deg); }
+.m4 { bottom:10%; left:10%; transform:rotate(15deg); }
+.deagle { top:30%; right:20%; transform:rotate(-15deg); }
 
 .hero {
     height:100vh;
-    background:
-      linear-gradient(to bottom, rgba(0,0,0,0.7), black),
-      url("https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=1600&q=80")
-      center/cover no-repeat;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.8), black);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+    position:relative;
+    z-index:1;
 }
 
 h1 {
@@ -71,6 +78,8 @@ section {
     max-width:1100px;
     margin:auto;
     text-align:center;
+    position:relative;
+    z-index:1;
 }
 
 .cards {
@@ -84,14 +93,7 @@ section {
     padding:40px;
     border-left:4px solid #ff003c;
     box-shadow:0 0 20px rgba(255,0,60,0.2);
-    transform:translateY(40px);
-    opacity:0;
-    transition:0.6s;
-}
-
-.card.show {
-    transform:translateY(0);
-    opacity:1;
+    transition:0.4s;
 }
 
 .card:hover {
@@ -122,6 +124,14 @@ h2 {
 </head>
 
 <body>
+
+<!-- Оружия -->
+<div class="weapons-bg">
+    <img src="https://pngimg.com/uploads/ak47/ak47_PNG24.png" class="ak">
+    <img src="https://pngimg.com/uploads/sniper_rifle/sniper_rifle_PNG31.png" class="awp">
+    <img src="https://pngimg.com/uploads/m4/m4_PNG17.png" class="m4">
+    <img src="https://pngimg.com/uploads/desert_eagle/desert_eagle_PNG6.png" class="deagle">
+</div>
 
 <div class="hero">
   <h1>ENYAANNN</h1>
@@ -172,19 +182,6 @@ h2 {
   </div>
 </section>
 
-<script>
-const cards = document.querySelectorAll('.card');
-
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if(top < trigger){
-      card.classList.add('show');
-    }
-  });
-});
-</script>
-
 </body>
 </html>
+
