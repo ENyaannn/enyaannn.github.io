@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENYAANNN | MAX PRO</title>
+<title>ENYAANNN | PRO ARENA</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -16,6 +16,7 @@ body{
     background:radial-gradient(circle at center,#080015,#000000 70%);
     color:white;
     overflow-x:hidden;
+    perspective:1000px;
     transition:0.5s;
 }
 
@@ -37,71 +38,11 @@ body{
     color:#ff003c;
     animation:pulse 2s infinite alternate;
 }
-.intro p{color:#aaa;margin-top:20px;}
 .intro.hide{opacity:0;pointer-events:none;}
 
 @keyframes pulse{
     from{text-shadow:0 0 20px #ff003c;}
     to{text-shadow:0 0 80px #ff003c,0 0 160px #00f0ff;}
-}
-
-/* ===== PARTICLES ===== */
-.particles{
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(circle at 20% 30%, rgba(255,0,60,0.2), transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(0,240,255,0.15), transparent 40%),
-      radial-gradient(circle at 50% 90%, rgba(140,0,255,0.15), transparent 40%);
-    animation:moveBg 12s linear infinite alternate;
-    pointer-events:none;
-    z-index:0;
-}
-@keyframes moveBg{
-    from{background-position:0 0;}
-    to{background-position:200px 200px;}
-}
-
-/* ===== SVG GUNS ===== */
-.guns{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
-}
-
-.gun{
-    fill:none;
-    stroke:url(#grad);
-    stroke-width:3;
-    filter:drop-shadow(0 0 20px #ff003c)
-           drop-shadow(0 0 40px #8000ff);
-    width:350px;
-    position:absolute;
-    opacity:0.8;
-}
-
-.gun-left{
-    top:20%;
-    left:-50px;
-    transform:rotate(-20deg);
-    animation:gunFloatLeft 6s ease-in-out infinite alternate;
-}
-
-.gun-right{
-    top:60%;
-    right:-50px;
-    transform:rotate(20deg);
-    animation:gunFloatRight 6s ease-in-out infinite alternate;
-}
-
-@keyframes gunFloatLeft{
-    from{transform:translateY(0px) rotate(-20deg);}
-    to{transform:translateY(40px) rotate(-10deg);}
-}
-@keyframes gunFloatRight{
-    from{transform:translateY(0px) rotate(20deg);}
-    to{transform:translateY(-40px) rotate(10deg);}
 }
 
 /* ===== HERO ===== */
@@ -113,7 +54,9 @@ body{
     align-items:center;
     text-align:center;
     position:relative;
-    z-index:1;
+    z-index:2;
+    transform-style:preserve-3d;
+    transition:transform 0.2s;
 }
 
 .glitch{
@@ -142,43 +85,59 @@ body{
     box-shadow:0 0 30px #ff003c;
 }
 
-/* ===== SECTIONS ===== */
-section{
-    padding:100px 20px;
-    max-width:1000px;
-    margin:auto;
-    text-align:center;
+/* ===== SVG AK47 ===== */
+.ak-container{
+    position:fixed;
+    top:25%;
+    right:-50px;
+    width:400px;
+    z-index:1;
+    animation:floatGun 6s ease-in-out infinite alternate;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+@keyframes floatGun{
+    from{transform:translateY(0px);}
+    to{transform:translateY(40px);}
 }
 
-.card{
-    background:#111;
-    padding:40px;
-    border-left:4px solid #ff003c;
-    box-shadow:0 0 40px rgba(255,0,60,0.6);
-    transition:0.3s;
-}
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 80px rgba(255,0,60,1);
+.ak{
+    width:100%;
+    fill:none;
+    stroke:url(#grad);
+    stroke-width:3;
+    filter:drop-shadow(0 0 20px #ff003c)
+           drop-shadow(0 0 40px #8000ff);
+    transition:transform 0.2s;
 }
 
-.link-btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:#ff003c;
-    color:white;
-    text-decoration:none;
+/* recoil */
+.ak.recoil{
+    transform:translateX(-20px);
 }
-.link-btn:hover{background:#00f0ff;}
 
-/* ===== CHICKEN MINI GAME ===== */
+/* muzzle flash */
+.flash{
+    position:absolute;
+    right:20px;
+    top:40%;
+    width:40px;
+    height:40px;
+    background:radial-gradient(circle,#fff,#ffcc00,#ff0000);
+    border-radius:50%;
+    opacity:0;
+}
+
+.flash.show{
+    opacity:1;
+    animation:flashAnim 0.2s forwards;
+}
+
+@keyframes flashAnim{
+    0%{transform:scale(0.5);opacity:1;}
+    100%{transform:scale(1.5);opacity:0;}
+}
+
+/* ===== CHICKEN GAME ===== */
 .chicken{
     position:fixed;
     bottom:30px;
@@ -189,7 +148,7 @@ section{
     border-radius:50%;
     animation:runChicken 10s linear infinite;
     cursor:pointer;
-    z-index:2;
+    z-index:3;
 }
 .chicken::before{
     content:'';
@@ -222,6 +181,20 @@ section{
     right:20px;
     z-index:10;
 }
+
+/* sections */
+section{
+    padding:100px 20px;
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+}
+.card{
+    background:#111;
+    padding:40px;
+    margin:20px 0;
+    border-left:4px solid #ff003c;
+}
 </style>
 </head>
 
@@ -229,75 +202,45 @@ section{
 
 <div class="intro" onclick="enterSite()">
     <h1>ENTER THE ARENA</h1>
-    <p>Click to Begin</p>
 </div>
 
 <audio id="bgMusic" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d44f1c4c6.mp3?filename=cyberpunk-ambient-11054.mp3">
 </audio>
 
-<div class="particles"></div>
-
-<!-- SVG Gradient -->
+<!-- gradient -->
 <svg width="0" height="0">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ff003c"/>
-      <stop offset="50%" style="stop-color:#8000ff"/>
-      <stop offset="100%" style="stop-color:#00f0ff"/>
+    <linearGradient id="grad">
+      <stop offset="0%" stop-color="#ff003c"/>
+      <stop offset="50%" stop-color="#8000ff"/>
+      <stop offset="100%" stop-color="#00f0ff"/>
     </linearGradient>
   </defs>
 </svg>
 
-<div class="guns">
-<svg class="gun gun-left" viewBox="0 0 200 60">
-  <rect x="10" y="25" width="150" height="10"/>
-  <rect x="120" y="15" width="30" height="10"/>
-  <rect x="40" y="35" width="20" height="20"/>
-</svg>
-
-<svg class="gun gun-right" viewBox="0 0 200 60">
-  <rect x="10" y="25" width="150" height="10"/>
-  <rect x="120" y="15" width="30" height="10"/>
-  <rect x="40" y="35" width="20" height="20"/>
+<div class="ak-container">
+<div class="flash" id="flash"></div>
+<svg class="ak" id="ak" viewBox="0 0 300 100">
+  <rect x="20" y="40" width="180" height="10"/>
+  <rect x="160" y="30" width="40" height="10"/>
+  <rect x="60" y="50" width="30" height="30"/>
+  <rect x="110" y="55" width="20" height="25"/>
 </svg>
 </div>
 
 <div class="score">Score: <span id="score">0</span></div>
 <div class="chicken" onclick="hitChicken()"></div>
 
-<div class="hero">
+<div class="hero" id="hero">
   <div class="glitch">ENYAANNN</div>
   <div class="subtitle">Aggressive Entry | Team Player | CS2 Competitor</div>
-  <div class="btn" onclick="toggleMode()">Toggle Ultra Mode</div>
+  <div class="btn" onclick="shoot()">Fire AK</div>
 </div>
 
 <section>
-<h2>Stats</h2>
-<div class="cards">
-  <div class="card">
-    Faceit Level: 10<br>
-    Elo: 2200<br>
-    K/D: 1.21
-  </div>
-</div>
-</section>
-
-<section>
-<h2>Contact</h2>
-<div class="cards">
-  <div class="card">
-    Steam<br>
-    <a class="link-btn" href="https://steamcommunity.com/id/zhenyaaaaaaLo/" target="_blank">Open Steam</a>
-  </div>
-  <div class="card">
-    Discord<br>
-    buldan.exl
-  </div>
-  <div class="card">
-    Telegram<br>
-    <a class="link-btn" href="https://t.me/EnyaaNnn" target="_blank">Open Telegram</a>
-  </div>
+<div class="card">
+Faceit Level: 10 | Elo: 2200 | K/D: 1.21
 </div>
 </section>
 
@@ -314,12 +257,24 @@ function hitChicken(){
     document.getElementById('score').innerText=score;
 }
 
-function toggleMode(){
-    document.body.style.background =
-        document.body.style.background === "black"
-        ? "radial-gradient(circle at center,#080015,#000000 70%)"
-        : "black";
+function shoot(){
+    let ak=document.getElementById('ak');
+    let flash=document.getElementById('flash');
+    ak.classList.add('recoil');
+    flash.classList.add('show');
+    setTimeout(()=>{
+        ak.classList.remove('recoil');
+        flash.classList.remove('show');
+    },200);
 }
+
+/* 3D tilt */
+document.addEventListener("mousemove",(e)=>{
+    let hero=document.getElementById("hero");
+    let x=(window.innerWidth/2 - e.clientX)/40;
+    let y=(window.innerHeight/2 - e.clientY)/40;
+    hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
 </script>
 
 </body>
