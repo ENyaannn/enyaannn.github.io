@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENYAANNN | MAX CYBER</title>
+<title>ENYAANNN | MAX PRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -55,55 +55,53 @@ body{
       radial-gradient(circle at 50% 90%, rgba(140,0,255,0.15), transparent 40%);
     animation:moveBg 12s linear infinite alternate;
     pointer-events:none;
+    z-index:0;
 }
 @keyframes moveBg{
     from{background-position:0 0;}
     to{background-position:200px 200px;}
 }
 
-/* ===== ANIMATED WEAPONS ===== */
-.weapon{
+/* ===== SVG GUNS ===== */
+.guns{
     position:fixed;
-    width:350px;
-    height:8px;
-    background:linear-gradient(90deg,#ff003c,#8000ff,#00f0ff);
-    box-shadow:0 0 30px #ff003c,0 0 60px purple;
-    opacity:0.8;
+    inset:0;
+    pointer-events:none;
     z-index:0;
 }
 
-.weapon.left{
+.gun{
+    fill:none;
+    stroke:url(#grad);
+    stroke-width:3;
+    filter:drop-shadow(0 0 20px #ff003c)
+           drop-shadow(0 0 40px #8000ff);
+    width:350px;
+    position:absolute;
+    opacity:0.8;
+}
+
+.gun-left{
     top:20%;
-    left:-100px;
-    transform:rotate(-30deg);
-    animation:weaponMoveLeft 8s ease-in-out infinite alternate;
+    left:-50px;
+    transform:rotate(-20deg);
+    animation:gunFloatLeft 6s ease-in-out infinite alternate;
 }
 
-.weapon.right{
+.gun-right{
     top:60%;
-    right:-100px;
-    transform:rotate(30deg);
-    animation:weaponMoveRight 8s ease-in-out infinite alternate;
+    right:-50px;
+    transform:rotate(20deg);
+    animation:gunFloatRight 6s ease-in-out infinite alternate;
 }
 
-.weapon.bottom{
-    bottom:10%;
-    left:20%;
-    transform:rotate(15deg);
-    animation:weaponMoveBottom 10s ease-in-out infinite alternate;
+@keyframes gunFloatLeft{
+    from{transform:translateY(0px) rotate(-20deg);}
+    to{transform:translateY(40px) rotate(-10deg);}
 }
-
-@keyframes weaponMoveLeft{
-    from{transform:translateY(0px) rotate(-30deg);}
-    to{transform:translateY(40px) rotate(-20deg);}
-}
-@keyframes weaponMoveRight{
-    from{transform:translateY(0px) rotate(30deg);}
-    to{transform:translateY(-40px) rotate(20deg);}
-}
-@keyframes weaponMoveBottom{
-    from{transform:translateX(0px) rotate(15deg);}
-    to{transform:translateX(40px) rotate(25deg);}
+@keyframes gunFloatRight{
+    from{transform:translateY(0px) rotate(20deg);}
+    to{transform:translateY(-40px) rotate(10deg);}
 }
 
 /* ===== HERO ===== */
@@ -239,9 +237,31 @@ section{
 </audio>
 
 <div class="particles"></div>
-<div class="weapon left"></div>
-<div class="weapon right"></div>
-<div class="weapon bottom"></div>
+
+<!-- SVG Gradient -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff003c"/>
+      <stop offset="50%" style="stop-color:#8000ff"/>
+      <stop offset="100%" style="stop-color:#00f0ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="guns">
+<svg class="gun gun-left" viewBox="0 0 200 60">
+  <rect x="10" y="25" width="150" height="10"/>
+  <rect x="120" y="15" width="30" height="10"/>
+  <rect x="40" y="35" width="20" height="20"/>
+</svg>
+
+<svg class="gun gun-right" viewBox="0 0 200 60">
+  <rect x="10" y="25" width="150" height="10"/>
+  <rect x="120" y="15" width="30" height="10"/>
+  <rect x="40" y="35" width="20" height="20"/>
+</svg>
+</div>
 
 <div class="score">Score: <span id="score">0</span></div>
 <div class="chicken" onclick="hitChicken()"></div>
