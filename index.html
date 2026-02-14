@@ -19,25 +19,12 @@ body {
 
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    background: linear-gradient(135deg,#000000,#1a0010);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    position:relative;
-}
-
-.hero::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.6), black);
-}
-
-.hero-content {
-    position:relative;
-    z-index:1;
 }
 
 h1 {
@@ -63,7 +50,7 @@ h1 {
 
 .btn:hover {
     background:#ff003c;
-    box-shadow:0 0 20px #ff003c;
+    box-shadow:0 0 25px #ff003c;
 }
 
 section {
@@ -83,19 +70,33 @@ section {
     padding:40px;
     border-left:4px solid #ff003c;
     box-shadow:0 0 20px rgba(255,0,60,0.2);
-    opacity:0;
-    transform:translateY(50px);
-    transition:0.6s;
+    transition:0.4s;
 }
 
-.card.show {
-    opacity:1;
-    transform:translateY(0);
+.card:hover {
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(255,0,60,0.5);
 }
 
 h2 {
     margin-bottom:20px;
     color:#ff003c;
+}
+
+.faceit-btn {
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    background:#ff003c;
+    color:white;
+    text-decoration:none;
+    box-shadow:0 0 20px #ff003c;
+    transition:0.3s;
+}
+
+.faceit-btn:hover {
+    background:purple;
+    box-shadow:0 0 30px purple;
 }
 </style>
 </head>
@@ -103,37 +104,46 @@ h2 {
 <body>
 
 <div class="hero">
-  <div class="hero-content">
-    <h1>ENYAANNN</h1>
-    <div class="subtitle">
-      Aggressive Entry | Team Player | CS2 Competitor
-    </div>
-    <a href="#about" class="btn">ENTER</a>
+  <h1>ENYAANNN</h1>
+  <div class="subtitle">
+    Aggressive Entry | Team Player | CS2 Competitor
   </div>
+  <a href="#stats" class="btn">VIEW STATS</a>
 </div>
 
 <section id="about">
   <h2>About Me</h2>
   <div class="cards">
     <div class="card">
-      <p>Агрессивный entry игрок. Создаю пространство, беру первые дуэли.</p>
+      Агрессивный entry игрок. Создаю пространство и беру первые дуэли.
     </div>
     <div class="card">
-      <p>Играю на результат и командную синергию.</p>
+      Играю на результат и синергию с командой.
     </div>
     <div class="card">
-      <p>Цель — выйти на высокий уровень и играть турниры.</p>
+      Цель — играть турниры и выйти на высокий уровень.
     </div>
   </div>
 </section>
 
-<section>
+<section id="stats">
   <h2>Stats</h2>
   <div class="cards">
-    <div class="card">Faceit Level: ?</div>
-    <div class="card">Premier Rating: ?</div>
-    <div class="card">K/D: ?</div>
+    <div class="card">
+      Faceit Level: <b>10</b><br>
+      Elo: <b>2200</b>
+    </div>
+    <div class="card">
+      Premier Rating: <b>10 000</b>
+    </div>
+    <div class="card">
+      K/D: <b>1.21</b>
+    </div>
   </div>
+
+  <a class="faceit-btn" href="https://www.faceit.com/ru/players/enyaannn69" target="_blank">
+    View Faceit Profile
+  </a>
 </section>
 
 <section>
@@ -144,20 +154,6 @@ h2 {
     <div class="card">Faceit</div>
   </div>
 </section>
-
-<script>
-const cards = document.querySelectorAll('.card');
-
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if(top < trigger){
-      card.classList.add('show');
-    }
-  });
-});
-</script>
 
 </body>
 </html>
