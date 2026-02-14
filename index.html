@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENYAANNN | PRO ARENA</title>
+<title>ENYAANNN | PRO ARENA+</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
 body{
     font-family:'Orbitron',sans-serif;
     background:radial-gradient(circle at center,#080015,#000000 70%);
@@ -19,46 +18,27 @@ body{
     perspective:1000px;
 }
 
-/* ===== INTRO ===== */
+/* INTRO */
 .intro{
-    position:fixed;
-    inset:0;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-    cursor:pointer;
-    transition:1s;
+    position:fixed;inset:0;background:black;
+    display:flex;justify-content:center;align-items:center;
+    z-index:999;cursor:pointer;transition:1s;
 }
-.intro h1{
-    font-size:60px;
-    color:#ff003c;
-    animation:pulse 2s infinite alternate;
-}
+.intro h1{font-size:60px;color:#ff003c;animation:pulse 2s infinite alternate;}
 .intro.hide{opacity:0;pointer-events:none;}
-
 @keyframes pulse{
     from{text-shadow:0 0 20px #ff003c;}
     to{text-shadow:0 0 80px #ff003c,0 0 150px #00f0ff;}
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    transform-style:preserve-3d;
-    transition:transform 0.2s;
+    height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    transform-style:preserve-3d;transition:transform 0.2s;
 }
-
 .glitch{
-    font-size:90px;
-    font-weight:900;
-    color:#ff003c;
+    font-size:90px;font-weight:900;color:#ff003c;
     animation:glitch 1.5s infinite;
 }
 @keyframes glitch{
@@ -66,149 +46,79 @@ body{
     50%{text-shadow:-3px -3px #00f0ff,3px 3px #ff003c;}
     100%{text-shadow:3px -3px #00f0ff,-3px 3px #ff003c;}
 }
-
 .subtitle{margin-top:20px;color:#ccc;}
+.btn{margin-top:30px;padding:15px 40px;border:2px solid #ff003c;cursor:pointer;}
+.btn:hover{background:#ff003c;box-shadow:0 0 30px #ff003c;}
 
-.btn{
-    margin-top:30px;
-    padding:15px 40px;
-    border:2px solid #ff003c;
-    cursor:pointer;
-    transition:0.3s;
-}
-.btn:hover{
-    background:#ff003c;
-    box-shadow:0 0 30px #ff003c;
-}
-
-/* ===== SVG AK ===== */
-.ak-container{
-    position:fixed;
-    top:25%;
-    right:-50px;
-    width:400px;
-    animation:floatGun 6s ease-in-out infinite alternate;
-}
-
-@keyframes floatGun{
-    from{transform:translateY(0px);}
-    to{transform:translateY(40px);}
-}
-
-.ak{
-    width:100%;
-    fill:none;
-    stroke:#ff003c;
-    stroke-width:3;
-    filter:drop-shadow(0 0 20px #ff003c);
-    transition:transform 0.2s;
-}
-
+/* AK */
+.ak-container{position:fixed;top:25%;right:-50px;width:400px;}
+.ak{width:100%;fill:none;stroke:#ff003c;stroke-width:3;
+filter:drop-shadow(0 0 20px #ff003c);}
 .ak.recoil{transform:translateX(-20px);}
-
-.flash{
-    position:absolute;
-    right:20px;
-    top:40%;
-    width:40px;
-    height:40px;
-    background:radial-gradient(circle,#fff,#ffcc00,#ff0000);
-    border-radius:50%;
-    opacity:0;
-}
-.flash.show{
-    opacity:1;
-    animation:flashAnim 0.2s forwards;
-}
+.flash{position:absolute;right:20px;top:40%;width:40px;height:40px;
+background:radial-gradient(circle,#fff,#ffcc00,#ff0000);
+border-radius:50%;opacity:0;}
+.flash.show{opacity:1;animation:flashAnim 0.2s forwards;}
 @keyframes flashAnim{
-    0%{transform:scale(0.5);opacity:1;}
-    100%{transform:scale(1.5);opacity:0;}
+0%{transform:scale(0.5);opacity:1;}
+100%{transform:scale(1.5);opacity:0;}
 }
 
-/* ===== CHICKEN ===== */
+/* CHICKEN */
 .chicken{
-    position:fixed;
-    bottom:30px;
-    left:-100px;
-    width:60px;
-    height:60px;
-    background:white;
-    border-radius:50%;
-    animation:runChicken 10s linear infinite;
-    cursor:pointer;
+position:fixed;bottom:30px;left:-100px;width:60px;height:60px;
+background:white;border-radius:50%;animation:runChicken 10s linear infinite;
+cursor:pointer;
 }
 .chicken::before{
-    content:'';
-    position:absolute;
-    width:30px;
-    height:30px;
-    background:red;
-    border-radius:50%;
-    top:-10px;
-    left:35px;
+content:'';position:absolute;width:30px;height:30px;
+background:red;border-radius:50%;top:-10px;left:35px;
 }
 .chicken::after{
-    content:'';
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:black;
-    border-radius:50%;
-    top:22px;
-    left:22px;
+content:'';position:absolute;width:12px;height:12px;
+background:black;border-radius:50%;top:22px;left:22px;
 }
 @keyframes runChicken{
-    0%{ left:-100px; }
-    100%{ left:110%; }
+0%{left:-100px;}100%{left:110%;}
 }
+.score{position:fixed;top:20px;right:20px;}
 
-.score{
-    position:fixed;
-    top:20px;
-    right:20px;
-}
-
-/* ===== SECTIONS ===== */
-section{
-    padding:100px 20px;
-    max-width:1000px;
-    margin:auto;
-    text-align:center;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
+/* SECTIONS */
+section{padding:100px 20px;max-width:1000px;margin:auto;text-align:center;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
 .card{
-    background:#111;
-    padding:40px;
-    border-left:4px solid #ff003c;
-    transition:0.3s;
+background:#111;padding:40px;border-left:4px solid #ff003c;
+transition:0.3s;
 }
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 40px #ff003c;
-}
-
+.card:hover{transform:translateY(-10px);box-shadow:0 0 40px #ff003c;}
 .link-btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:#ff003c;
-    color:white;
-    text-decoration:none;
+display:inline-block;margin-top:15px;padding:10px 20px;
+background:#ff003c;color:white;text-decoration:none;
 }
 .link-btn:hover{background:#00f0ff;}
+
+/* SKILL BARS */
+.skill{margin:20px 0;text-align:left;}
+.bar{
+height:10px;background:#222;position:relative;margin-top:10px;
+}
+.bar-fill{
+height:100%;background:#ff003c;width:0;
+transition:width 2s ease;
+}
+
+/* QUOTE */
+.quote{
+font-size:20px;margin-top:40px;
+color:#aaa;font-style:italic;
+}
 </style>
 </head>
 
 <body>
 
 <div class="intro" onclick="enterSite()">
-    <h1>ENTER THE ARENA</h1>
+<h1>ENTER THE ARENA</h1>
 </div>
 
 <audio id="bgMusic" loop>
@@ -218,10 +128,10 @@ section{
 <div class="ak-container">
 <div class="flash" id="flash"></div>
 <svg class="ak" id="ak" viewBox="0 0 300 100">
-  <rect x="20" y="40" width="180" height="10"/>
-  <rect x="160" y="30" width="40" height="10"/>
-  <rect x="60" y="50" width="30" height="30"/>
-  <rect x="110" y="55" width="20" height="25"/>
+<rect x="20" y="40" width="180" height="10"/>
+<rect x="160" y="30" width="40" height="10"/>
+<rect x="60" y="50" width="30" height="30"/>
+<rect x="110" y="55" width="20" height="25"/>
 </svg>
 </div>
 
@@ -229,71 +139,121 @@ section{
 <div class="chicken" onclick="hitChicken()"></div>
 
 <div class="hero" id="hero">
-  <div class="glitch">ENYAANNN</div>
-  <div class="subtitle">Aggressive Entry | Team Player | CS2 Competitor</div>
-  <div class="btn" onclick="shoot()">Fire AK</div>
+<div class="glitch">ENYAANNN</div>
+<div class="subtitle">Aggressive Entry | Team Player | CS2 Competitor</div>
+<div class="btn" onclick="shoot()">Fire AK</div>
 </div>
+
+<section>
+<h2>Player Profile</h2>
+<div class="cards">
+<div class="card">
+ROLE: Entry Fragger<br>
+Playstyle: Aggressive<br>
+Strength: First Kill Impact<br>
+Mentality: High Pressure
+</div>
+</div>
+<div class="quote">
+"I don’t wait for space. I create it."
+</div>
+</section>
 
 <section>
 <h2>Stats</h2>
 <div class="cards">
-  <div class="card">
-    Faceit Level: 10<br>
-    Elo: 2200<br>
-    K/D: 1.21
-  </div>
+<div class="card">
+Faceit Level: <span class="counter" data-target="10">0</span><br>
+Elo: <span class="counter" data-target="2200">0</span><br>
+K/D: 1.21
+</div>
+</div>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="skill">
+Aim
+<div class="bar"><div class="bar-fill" data-width="90%"></div></div>
+</div>
+<div class="skill">
+Game Sense
+<div class="bar"><div class="bar-fill" data-width="80%"></div></div>
+</div>
+<div class="skill">
+Entry Impact
+<div class="bar"><div class="bar-fill" data-width="85%"></div></div>
 </div>
 </section>
 
 <section>
 <h2>Contact</h2>
 <div class="cards">
-  <div class="card">
-    Steam<br>
-    <a class="link-btn" href="https://steamcommunity.com/id/zhenyaaaaaaLo/" target="_blank">Open Steam</a>
-  </div>
-  <div class="card">
-    Discord<br>
-    buldan.exl
-  </div>
-  <div class="card">
-    Telegram<br>
-    <a class="link-btn" href="https://t.me/EnyaaNnn" target="_blank">Open Telegram</a>
-  </div>
+<div class="card">
+Steam<br>
+<a class="link-btn" href="https://steamcommunity.com/id/zhenyaaaaaaLo/" target="_blank">Open Steam</a>
+</div>
+<div class="card">
+Discord<br>buldan.exl
+</div>
+<div class="card">
+Telegram<br>
+<a class="link-btn" href="https://t.me/EnyaaNnn" target="_blank">Open Telegram</a>
+</div>
 </div>
 </section>
 
 <script>
 let score=0;
-
 function enterSite(){
-    document.querySelector('.intro').classList.add('hide');
-    document.getElementById('bgMusic').play();
+document.querySelector('.intro').classList.add('hide');
+document.getElementById('bgMusic').play();
 }
-
 function hitChicken(){
-    score++;
-    document.getElementById('score').innerText=score;
+score++;
+document.getElementById('score').innerText=score;
 }
-
 function shoot(){
-    let ak=document.getElementById('ak');
-    let flash=document.getElementById('flash');
-    ak.classList.add('recoil');
-    flash.classList.add('show');
-    setTimeout(()=>{
-        ak.classList.remove('recoil');
-        flash.classList.remove('show');
-    },200);
+let ak=document.getElementById('ak');
+let flash=document.getElementById('flash');
+ak.classList.add('recoil');
+flash.classList.add('show');
+setTimeout(()=>{
+ak.classList.remove('recoil');
+flash.classList.remove('show');
+},200);
 }
-
 document.addEventListener("mousemove",(e)=>{
-    let hero=document.getElementById("hero");
-    let x=(window.innerWidth/2 - e.clientX)/40;
-    let y=(window.innerHeight/2 - e.clientY)/40;
-    hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+let hero=document.getElementById("hero");
+let x=(window.innerWidth/2 - e.clientX)/40;
+let y=(window.innerHeight/2 - e.clientY)/40;
+hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+/* counters */
+const counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+const update=()=>{
+const target=+counter.getAttribute('data-target');
+const current=+counter.innerText;
+const inc=target/100;
+if(current<target){
+counter.innerText=Math.ceil(current+inc);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+
+/* skill bars */
+const bars=document.querySelectorAll('.bar-fill');
+bars.forEach(bar=>{
+bar.style.width=bar.getAttribute('data-width');
 });
 </script>
 
 </body>
 </html>
+
