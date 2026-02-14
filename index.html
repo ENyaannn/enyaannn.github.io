@@ -9,35 +9,32 @@
 
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
-
 html {scroll-behavior:smooth;}
 
 body {
     font-family:'Orbitron', sans-serif;
-    background:black;
+    background:linear-gradient(135deg,#000000,#140008);
     color:white;
     overflow-x:hidden;
 }
 
-/* Фон с оружием */
+/* Фоновое оружие — мягкое */
 .weapons-bg img {
     position:fixed;
-    width:300px;
-    opacity:0.08;
-    filter:drop-shadow(0 0 20px red);
+    width:350px;
+    opacity:0.05; /* почти прозрачные */
+    filter:drop-shadow(0 0 15px #ff003c);
     pointer-events:none;
     z-index:0;
 }
 
-/* Размещение оружия */
-.ak { top:10%; left:-50px; transform:rotate(-25deg); }
-.awp { top:60%; right:-60px; transform:rotate(20deg); }
-.m4 { bottom:10%; left:10%; transform:rotate(15deg); }
-.deagle { top:30%; right:20%; transform:rotate(-15deg); }
+.ak { top:15%; left:-80px; transform:rotate(-20deg); }
+.awp { top:55%; right:-80px; transform:rotate(20deg); }
+.m4 { bottom:5%; left:15%; transform:rotate(15deg); }
+.deagle { top:25%; right:20%; transform:rotate(-15deg); }
 
 .hero {
     height:100vh;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.8), black);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -125,7 +122,7 @@ h2 {
 
 <body>
 
-<!-- Оружия -->
+<!-- Оружие на фоне -->
 <div class="weapons-bg">
     <img src="https://pngimg.com/uploads/ak47/ak47_PNG24.png" class="ak">
     <img src="https://pngimg.com/uploads/sniper_rifle/sniper_rifle_PNG31.png" class="awp">
