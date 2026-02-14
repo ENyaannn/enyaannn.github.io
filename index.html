@@ -199,7 +199,28 @@ h2{
     <p>Click to Enter</p>
 </div>
 
-<div class="pacman"></div>
+/* ===== CS CHICKEN ===== */
+
+.chicken {
+    position:fixed;
+    width:80px;
+    bottom:20px;
+    left:-100px;
+    z-index:2;
+    animation:runChicken 18s linear infinite,
+               bounce 0.6s ease-in-out infinite alternate;
+    filter:drop-shadow(0 0 15px #ff003c);
+}
+
+@keyframes runChicken {
+    0% { left:-100px; }
+    100% { left:110%; }
+}
+
+@keyframes bounce {
+    from { transform:translateY(0px); }
+    to { transform:translateY(-10px); }
+}
 
 <div class="weapons-bg">
     <img src="https://pngimg.com/uploads/ak47/ak47_PNG24.png" class="ak">
