@@ -35,7 +35,7 @@ body{
 .intro h1{
     font-size:60px;
     color:#ff003c;
-    text-shadow:0 0 30px #ff003c,0 0 80px purple;
+    text-shadow:0 0 40px #ff003c,0 0 80px purple;
     animation:pulse 2s infinite alternate;
 }
 
@@ -51,52 +51,67 @@ body{
 
 @keyframes pulse{
     from{ text-shadow:0 0 20px #ff003c,0 0 40px purple;}
-    to{ text-shadow:0 0 60px #ff003c,0 0 120px #00f0ff;}
+    to{ text-shadow:0 0 70px #ff003c,0 0 150px #00f0ff;}
 }
 
-/* ===== CS CHICKEN ===== */
+/* ===== CSS CHICKEN (без картинок) ===== */
 .chicken{
     position:fixed;
-    width:80px;
-    bottom:20px;
-    left:-120px;
+    bottom:30px;
+    left:-100px;
+    width:60px;
+    height:60px;
+    background:white;
+    border-radius:50%;
     z-index:2;
     animation:runChicken 18s linear infinite,
-               bounce 0.6s ease-in-out infinite alternate;
-    filter:drop-shadow(0 0 20px #ff003c);
+               bounce 0.5s ease-in-out infinite alternate;
+    box-shadow:0 0 20px #ff003c;
+}
+
+.chicken::before{
+    content:'';
+    position:absolute;
+    width:30px;
+    height:30px;
+    background:red;
+    border-radius:50%;
+    top:-10px;
+    left:35px;
+}
+
+.chicken::after{
+    content:'';
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:black;
+    border-radius:50%;
+    top:20px;
+    left:20px;
 }
 
 @keyframes runChicken{
-    0%{ left:-120px; }
+    0%{ left:-100px; }
     100%{ left:110%; }
 }
 
 @keyframes bounce{
     from{ transform:translateY(0px); }
-    to{ transform:translateY(-12px); }
+    to{ transform:translateY(-10px); }
 }
 
-/* ===== WEAPONS ===== */
-.weapons-bg img{
+/* ===== WEAPON STYLE (абстрактный неон) ===== */
+.weapons-glow{
     position:fixed;
-    width:420px;
-    opacity:0.18;
-    filter:drop-shadow(0 0 30px #ff003c)
-           drop-shadow(0 0 50px purple);
-    pointer-events:none;
+    inset:0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255,0,60,0.2), transparent 40%),
+      radial-gradient(circle at 90% 70%, rgba(120,0,255,0.2), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(0,240,255,0.15), transparent 40%);
     z-index:0;
-    animation:float 6s ease-in-out infinite alternate;
+    pointer-events:none;
 }
-
-@keyframes float{
-    from{transform:translateY(0px) rotate(-5deg);}
-    to{transform:translateY(25px) rotate(5deg);}
-}
-
-.ak{ top:15%; left:-80px;}
-.awp{ top:55%; right:-80px;}
-.m4{ bottom:5%; left:15%;}
-.deagle{ top:25%; right:20%;}
 
 /* ===== MAIN ===== */
 .hero{
@@ -113,9 +128,9 @@ body{
 .hero h1{
     font-size:90px;
     color:#ff003c;
-    text-shadow:0 0 40px #ff003c,
-                0 0 100px purple,
-                0 0 150px #00f0ff;
+    text-shadow:0 0 50px #ff003c,
+                0 0 120px purple,
+                0 0 200px #00f0ff;
 }
 
 .subtitle{
@@ -135,7 +150,7 @@ body{
 
 .btn:hover{
     background:#ff003c;
-    box-shadow:0 0 35px #ff003c;
+    box-shadow:0 0 40px #ff003c;
 }
 
 section{
@@ -157,13 +172,13 @@ section{
     background:linear-gradient(135deg,#111,#1a0015);
     padding:40px;
     border-left:4px solid #ff003c;
-    box-shadow:0 0 30px rgba(255,0,60,0.5);
+    box-shadow:0 0 40px rgba(255,0,60,0.6);
     transition:0.4s;
 }
 
 .card:hover{
     transform:translateY(-10px);
-    box-shadow:0 0 70px rgba(255,0,60,0.9);
+    box-shadow:0 0 80px rgba(255,0,60,1);
 }
 
 h2{
@@ -178,13 +193,13 @@ h2{
     background:#ff003c;
     color:white;
     text-decoration:none;
-    box-shadow:0 0 30px #ff003c;
+    box-shadow:0 0 40px #ff003c;
     transition:0.3s;
 }
 
 .link-btn:hover{
     background:#00f0ff;
-    box-shadow:0 0 50px #00f0ff;
+    box-shadow:0 0 60px #00f0ff;
 }
 </style>
 </head>
@@ -196,14 +211,8 @@ h2{
     <p>Click to Enter</p>
 </div>
 
-<img src="https://static.wikia.nocookie.net/cswikia/images/6/63/Chicken_CS2.png" class="chicken">
-
-<div class="weapons-bg">
-    <img src="https://pngimg.com/uploads/ak47/ak47_PNG24.png" class="ak">
-    <img src="https://pngimg.com/uploads/sniper_rifle/sniper_rifle_PNG31.png" class="awp">
-    <img src="https://pngimg.com/uploads/m4/m4_PNG17.png" class="m4">
-    <img src="https://pngimg.com/uploads/desert_eagle/desert_eagle_PNG6.png" class="deagle">
-</div>
+<div class="weapons-glow"></div>
+<div class="chicken"></div>
 
 <div class="hero">
   <h1>ENYAANNN</h1>
@@ -262,5 +271,3 @@ function enterSite(){
 
 </body>
 </html>
-
-
