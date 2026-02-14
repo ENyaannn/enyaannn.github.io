@@ -5,101 +5,159 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ENYAANNN | CS2 Player</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
+* {margin:0;padding:0;box-sizing:border-box;}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a0005, #000000);
+    font-family: 'Orbitron', sans-serif;
+    background: black;
     color: white;
-    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-header {
+.hero {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.6), black);
+}
+
+.hero-content {
+    position:relative;
+    z-index:1;
 }
 
 h1 {
-    font-size: 70px;
-    color: #ff0033;
-    text-shadow: 0 0 20px #ff0033, 0 0 40px purple;
-    margin: 0;
+    font-size:90px;
+    color:#ff003c;
+    text-shadow:0 0 25px #ff003c, 0 0 60px purple;
 }
 
 .subtitle {
-    font-size: 22px;
-    color: #aaa;
-    margin-top: 20px;
+    margin-top:20px;
+    color:#ccc;
 }
 
 .btn {
-    margin-top: 40px;
-    padding: 15px 35px;
-    border: 2px solid #ff0033;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+    display:inline-block;
+    margin-top:40px;
+    padding:15px 40px;
+    border:2px solid #ff003c;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
 }
 
 .btn:hover {
-    background: #ff0033;
-    box-shadow: 0 0 20px #ff0033;
+    background:#ff003c;
+    box-shadow:0 0 20px #ff003c;
 }
 
 section {
-    padding: 100px 20px;
-    max-width: 900px;
-    margin: auto;
+    padding:100px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
 }
 
 .card {
-    background: #111;
-    padding: 30px;
-    border-left: 4px solid #ff0033;
-    margin-bottom: 30px;
-    box-shadow: 0 0 20px rgba(255,0,51,0.3);
+    background:#111;
+    padding:40px;
+    border-left:4px solid #ff003c;
+    box-shadow:0 0 20px rgba(255,0,60,0.2);
+    opacity:0;
+    transform:translateY(50px);
+    transition:0.6s;
+}
+
+.card.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2 {
+    margin-bottom:20px;
+    color:#ff003c;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="hero">
+  <div class="hero-content">
     <h1>ENYAANNN</h1>
     <div class="subtitle">
-        Aggressive Entry | Team Player | CS2 Competitor
+      Aggressive Entry | Team Player | CS2 Competitor
     </div>
     <a href="#about" class="btn">ENTER</a>
-</header>
+  </div>
+</div>
 
 <section id="about">
+  <h2>About Me</h2>
+  <div class="cards">
     <div class="card">
-        <h2>About Me</h2>
-        <p>
-        Я агрессивный игрок в CS2. Играю на килы и пространство для команды.
-        Люблю быстрые решения, жёсткие энтри и командную дисциплину.
-        </p>
+      <p>Агрессивный entry игрок. Создаю пространство, беру первые дуэли.</p>
     </div>
+    <div class="card">
+      <p>Играю на результат и командную синергию.</p>
+    </div>
+    <div class="card">
+      <p>Цель — выйти на высокий уровень и играть турниры.</p>
+    </div>
+  </div>
 </section>
 
 <section>
-    <div class="card">
-        <h2>Faceit</h2>
-        <p>Добавь сюда ссылку на свой Faceit профиль.</p>
-    </div>
+  <h2>Stats</h2>
+  <div class="cards">
+    <div class="card">Faceit Level: ?</div>
+    <div class="card">Premier Rating: ?</div>
+    <div class="card">K/D: ?</div>
+  </div>
 </section>
 
 <section>
-    <div class="card">
-        <h2>Contact</h2>
-        <p>Steam | Discord | Telegram</p>
-    </div>
+  <h2>Contact</h2>
+  <div class="cards">
+    <div class="card">Steam</div>
+    <div class="card">Discord</div>
+    <div class="card">Faceit</div>
+  </div>
 </section>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if(top < trigger){
+      card.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
