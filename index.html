@@ -14,7 +14,6 @@ body {
     font-family: 'Orbitron', sans-serif;
     background: black;
     color: white;
-    overflow-x: hidden;
 }
 
 .hero {
@@ -57,6 +56,7 @@ section {
     padding:100px 20px;
     max-width:1100px;
     margin:auto;
+    text-align:center;
 }
 
 .cards {
@@ -79,24 +79,24 @@ section {
 }
 
 h2 {
-    margin-bottom:20px;
+    margin-bottom:30px;
     color:#ff003c;
 }
 
-.faceit-btn {
+.link-btn {
     display:inline-block;
-    margin-top:20px;
-    padding:12px 30px;
+    margin-top:15px;
+    padding:12px 25px;
     background:#ff003c;
     color:white;
     text-decoration:none;
-    box-shadow:0 0 20px #ff003c;
+    box-shadow:0 0 15px #ff003c;
     transition:0.3s;
 }
 
-.faceit-btn:hover {
+.link-btn:hover {
     background:purple;
-    box-shadow:0 0 30px purple;
+    box-shadow:0 0 25px purple;
 }
 </style>
 </head>
@@ -111,27 +111,15 @@ h2 {
   <a href="#stats" class="btn">VIEW STATS</a>
 </div>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="cards">
-    <div class="card">
-      Агрессивный entry игрок. Создаю пространство и беру первые дуэли.
-    </div>
-    <div class="card">
-      Играю на результат и синергию с командой.
-    </div>
-    <div class="card">
-      Цель — играть турниры и выйти на высокий уровень.
-    </div>
-  </div>
-</section>
-
 <section id="stats">
   <h2>Stats</h2>
   <div class="cards">
     <div class="card">
       Faceit Level: <b>10</b><br>
-      Elo: <b>2200</b>
+      Elo: <b>2200</b><br><br>
+      <a class="link-btn" href="https://www.faceit.com/ru/players/enyaannn69" target="_blank">
+        View Faceit
+      </a>
     </div>
     <div class="card">
       Premier Rating: <b>10 000</b>
@@ -140,18 +128,27 @@ h2 {
       K/D: <b>1.21</b>
     </div>
   </div>
-
-  <a class="faceit-btn" href="https://www.faceit.com/ru/players/enyaannn69" target="_blank">
-    View Faceit Profile
-  </a>
 </section>
 
 <section>
   <h2>Contact</h2>
   <div class="cards">
-    <div class="card">Steam</div>
-    <div class="card">Discord</div>
-    <div class="card">Faceit</div>
+    <div class="card">
+      Steam<br>
+      <a class="link-btn" href="https://steamcommunity.com/id/zhenyaaaaaaLo/" target="_blank">
+        Open Steam
+      </a>
+    </div>
+    <div class="card">
+      Discord<br>
+      buldan.exl
+    </div>
+    <div class="card">
+      Telegram<br>
+      <a class="link-btn" href="https://t.me/EnyaaNnn" target="_blank">
+        Open Telegram
+      </a>
+    </div>
   </div>
 </section>
 
